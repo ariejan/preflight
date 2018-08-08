@@ -310,7 +310,7 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 defaults write com.apple.dock mru-spaces -bool false
 
 # Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+# defaults write com.apple.dock showhidden -bool true
 
 # Turn off dock icons magnification
 defaults write com.apple.dock magnification -boolean false
@@ -414,6 +414,14 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 
 info_echo "Restarting affected applications"
+
+# Clean up iconservices cache
+sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm -rf {} \;
+sudo find /private/var/folders/ -name com.apple.iconservices -exec rm -rf {} \;
+sudo rm -rf /Library/Caches/com.apple.iconservices.store
+
+info_echo "Cleaned up iconservices. Please reboot your machine at the soonest"
+
 for app in "cfprefsd" "Dock" "Finder" "Safari" "Firefox" "Mail" "SystemUIServer" "iTerm"; do
   killall "${app}" > /dev/null 2>&1 || true
 done
