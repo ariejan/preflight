@@ -21,6 +21,7 @@ brew "the_silver_searcher"
 # Essential Mac apps
 tap "caskroom/cask"
 tap "caskroom/versions"
+tap "caskroom/fonts"
 
 cask "java"
 cask "skype"
@@ -30,6 +31,7 @@ cask "firefox"
 cask "slack"
 cask "dbeaver-community"
 cask "gpg-suite"
+cask "font-hack"
 
 # Ruby development
 brew "rbenv"
