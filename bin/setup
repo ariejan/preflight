@@ -11,6 +11,7 @@ fi
 
 macos_modules=(
     macos_version
+    macos_update
 )
 
 ubuntu_modules=(
