@@ -9,7 +9,7 @@ if grep -Fxq "$zsh_path" /etc/shells; then
     info_echo "Zsh is already available in /etc/shells"
 else
     info_echo "Adding zsh to /etc/shells"
-    sudo echo "$zsh_path" >> /etc/shells
+    sudo bash -c 'echo "$zsh_path" >> /etc/shells'
 fi
 
 chsh -s $zsh_path
