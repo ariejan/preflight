@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 
-osx_bootstrap="$(cd "$(dirname "$0")/.." && pwd -P)"
-source "$osx_bootstrap/modules/functions.bash"
+preflight_dir="$(cd "$(dirname "$0")/.." && pwd -P)"
+source "$preflight_dir/modules/functions.bash"
 
 
 info_echo "Setting up macos defaults"
 
 
 info_echo "Setting up hostname"
-read -p "${blue}What shall be your hostname:${color_reset} " hostname
-info_echo "Your hostname shall be '$hostname'"
-sudo scutil --set ComputerName "$hostname"
-sudo scutil --set HostName "$hostname"
-sudo scutil --set LocalHostName  "$hostname"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$hostname"
+if [ ! -f "$preflight_dir/hostname" ]; then
+  read -p "${blue}What shall be your hostname:${color_reset} " hostname
+
+  info_echo "Your hostname shall be '$hostname'"
+
+  echo "$hostname" > $preflight_dir/hostname
+
+  sudo scutil --set ComputerName "$hostname"
+  sudo scutil --set HostName "$hostname"
+  sudo scutil --set LocalHostName  "$hostname"
+  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$hostname"
+fi
 
 
 info_echo "Hiding useless menubar items"
