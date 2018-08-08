@@ -19,6 +19,7 @@ macos_modules=(
     brew
     macos_defaults
     ruby
+    ssh
 )
 
 ubuntu_modules=(
