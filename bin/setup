@@ -21,6 +21,7 @@ macos_modules=(
     ruby
     ssh
     zsh
+    iterm
     dotfiles
 )
 
