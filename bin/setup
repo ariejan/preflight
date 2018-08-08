@@ -18,6 +18,7 @@ macos_modules=(
 
 ubuntu_modules=(
     ubuntu_version
+    ubuntu_update
 )
 
 if [[ $OSTYPE == darwin* ]]; then 
