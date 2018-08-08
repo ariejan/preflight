@@ -14,6 +14,7 @@ brew "vim"
 brew "curl", args: ["with-openssl"]
 brew "zsh"
 brew "stow"
+brew "gpg"
 
 # Essential Mac apps
 tap "caskroom/cask"
@@ -26,6 +27,7 @@ cask "the-unarchiver"
 cask "firefox"
 cask "slack"
 cask "dbeaver-community"
+cask "gpg-suite"
 
 # Ruby development
 brew "rbenv"
