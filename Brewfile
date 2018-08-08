@@ -16,6 +16,7 @@ brew "zsh"
 brew "stow"
 brew "gpg"
 brew "dockutil"
+brew "the_silver_searcher"
 
 # Essential Mac apps
 tap "caskroom/cask"
