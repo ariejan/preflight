@@ -3,15 +3,15 @@
 preflight_dir="$(cd "$(dirname "$0")/.." && pwd -P)"
 source "$preflight_dir/modules/functions.bash"
 
-zsh_path="$(which zsh)"
-username="$(whoami)"
+export ZSH_PATH="$(which zsh)"
+export USERNAME="$(whoami)"
 
 if grep -Fxq "$zsh_path" /etc/shells; then 
     info_echo "Zsh is already available in /etc/shells"
 else
     info_echo "Adding zsh to /etc/shells"
-    sudo bash -c 'echo "$zsh_path" >> /etc/shells'
+    sudo -E bash -c 'echo "$ZSH_PATH" >> /etc/shells'
 fi
 
-sudo -S chsh -s "$zsh_path" "$username"
+sudo -ES chsh -s "$ZSH_PATH" "$USERNAME"
 
