@@ -16,6 +16,7 @@ macos_modules=(
     macos_update
     project_dir
     brew
+    macos_defaults
 )
 
 ubuntu_modules=(

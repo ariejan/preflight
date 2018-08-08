@@ -4,6 +4,7 @@ export NVM_DIR=/usr/local/var/nvm
 
 red=$(tput setaf 1)
 green=$(tput setaf 2)
+blue=$(tput setaf 4)
 color_reset=$(tput sgr0)
 
 error_echo() {
