@@ -14,11 +14,13 @@ fi
 macos_modules=(
     macos_version
     macos_update
+    project_dir
 )
 
 ubuntu_modules=(
     ubuntu_version
     ubuntu_update
+    project_dir
 )
 
 if [[ $OSTYPE == darwin* ]]; then 
