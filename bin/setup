@@ -20,6 +20,7 @@ macos_modules=(
     macos_defaults
     ruby
     ssh
+    zsh
 )
 
 ubuntu_modules=(
