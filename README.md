@@ -15,3 +15,8 @@ Once CLT are installed, re-run the bash-curl command.
 _You may need to interact with Preflight during installation. Most notably you
 will be asked for your password when executing administrative tasks (like software
 update or installing applications in `/Applications`)._
+
+_The `setup` script is idempotent, so you can safely run it multiple times without
+issue. If Preflight was updated, those changes will take effect when subsequently
+running the bash-curl script again._
+
