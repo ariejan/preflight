@@ -18,6 +18,7 @@ macos_modules=(
     project_dir
     brew
     macos_defaults
+    ruby
 )
 
 ubuntu_modules=(
