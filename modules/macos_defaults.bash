@@ -286,20 +286,18 @@ sudo chflags nohidden /Volumes
 
 info_echo "Configuring the Dock"
 
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-defaults write com.apple.dock persistent-apps -array
+# Use dockutil, as it does not mess up Dock/Icon cache
+dockutil --remove all
 
 # Add applications to Dock
 for app in \
-  Firefox \
   Mail \
+  Firefox \
   Slack \
   iTerm \
   System\ Preferences
 do
-  defaults write com.apple.dock "persistent-apps" -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/$app.app/</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+  dockutil --add /Applications/$app.app/
 done
 
 # Disable Dashboard

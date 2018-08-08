@@ -15,6 +15,7 @@ brew "curl", args: ["with-openssl"]
 brew "zsh"
 brew "stow"
 brew "gpg"
+brew "dockutil"
 
 # Essential Mac apps
 tap "caskroom/cask"
