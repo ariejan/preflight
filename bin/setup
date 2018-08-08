@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e
+
+PREFLIGHT_DIR=${PREFLIGHT_DIR:-"$HOME/.preflight"}
+
+if [ ! -d "$PREFLIGHT_DIR" ]
+then
+    git clone -b master https://github.com/ariejan/preflight.git "$PREFLIGHT_DIR"
+fi
+
+macos_modules=(
+    macos_version
+)
+
+ubuntu_modules=(
+    ubuntu_version
+)
+
+if [[ $OSTYPE == darwin* ]]; then 
+    for module in "${macos_modules[@]}"
+    do
+        bash "$PREFLIGHT_DIR/modules/$module.bash"
+    done
+fi
+
+if [[ $OSTYPE == linux* ]]; then 
+    for module in "${ubuntu_modules[@]}"
+    do
+        bash "$PREFLIGHT_DIR/modules/$module.bash"
+    done
+fi
+
