@@ -12,6 +12,7 @@ else
 fi
 
 macos_modules=(
+    sudo
     macos_version
     macos_update
     project_dir
@@ -20,6 +21,7 @@ macos_modules=(
 )
 
 ubuntu_modules=(
+    sudo
     ubuntu_version
     ubuntu_update
     project_dir
