@@ -4,6 +4,7 @@ preflight_dir="$(cd "$(dirname "$0")/.." && pwd -P)"
 source "$preflight_dir/modules/functions.bash"
 
 zsh_path="$(which zsh)"
+username="$(whoami)"
 
 if grep -Fxq "$zsh_path" /etc/shells; then 
     info_echo "Zsh is already available in /etc/shells"
@@ -12,5 +13,5 @@ else
     sudo bash -c 'echo "$zsh_path" >> /etc/shells'
 fi
 
-chsh -s $zsh_path
+sudo -S chsh -s "$zsh_path" "$username"
 
