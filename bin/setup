@@ -4,9 +4,11 @@ set -e
 
 PREFLIGHT_DIR=${PREFLIGHT_DIR:-"$HOME/.preflight"}
 
-if [ ! -d "$PREFLIGHT_DIR" ]
-then
+if [ ! -d "$PREFLIGHT_DIR" ]; then
     git clone -b master https://github.com/ariejan/preflight.git "$PREFLIGHT_DIR"
+else
+    cd $PREFLIGHT_DIR
+    git pull origin master
 fi
 
 macos_modules=(
