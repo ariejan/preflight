@@ -28,3 +28,4 @@ stow git ruby sqlite tmux vim zsh
 
 # Vim
 vim +BundleInstall +qall
+vim :GoInstallBinaries +qall
