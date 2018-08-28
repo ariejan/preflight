@@ -32,6 +32,10 @@ cask "slack"
 cask "dbeaver-community"
 cask "gpg-suite"
 cask "font-hack"
+cask "karabiner"
+
+# Go development
+brew "go"
 
 # Ruby development
 brew "rbenv"
