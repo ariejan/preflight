@@ -22,13 +22,13 @@ if [ ! -f "$preflight_dir/hostname" ]; then
 fi
 
 
-info_echo "Hiding useless menubar items"
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-    defaults write "${domain}" dontAutoload -array \
-        "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-        "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-        "/System/Library/CoreServices/Menu Extras/User.menu"
-done
+# info_echo "Hiding useless menubar items"
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+#     defaults write "${domain}" dontAutoload -array \
+#         "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#         "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#         "/System/Library/CoreServices/Menu Extras/User.menu"
+# done
 
 defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
 defaults write NSGlobalDomain AppleLocale -string "nl_NL@currency=EUR"
@@ -38,9 +38,9 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "Europe/Amsterdam" > /dev/null
 
-info_echo "Accelerating keyboard"
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+# info_echo "Accelerating keyboard"
+# defaults write NSGlobalDomain KeyRepeat -int 1
+# defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 
 info_echo "Disabling auto corrcet"
@@ -115,11 +115,11 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 
-info_echo "Setting up language and locale"
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# info_echo "Setting up language and locale"
+# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+# defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -142,7 +142,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
@@ -152,13 +152,13 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+# sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+# sudo systemsetup -setcomputersleep Off > /dev/null
 
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
@@ -180,7 +180,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 info_echo "Hacking SSD configuration"
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 
 
 info_echo "Re-adjusting sound settings"
@@ -217,7 +217,7 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 info_echo "Setting up Finder"
 
 # Finder: disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
+# defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -249,7 +249,7 @@ defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+# defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Set $HOME as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
@@ -286,28 +286,28 @@ sudo chflags nohidden /Volumes
 
 info_echo "Configuring the Dock"
 
-# Use dockutil, as it does not mess up Dock/Icon cache
-dockutil --remove all
+# # Use dockutil, as it does not mess up Dock/Icon cache
+# dockutil --remove all
 
-# Add applications to Dock
-for app in \
-  Mail \
-  Firefox \
-  Slack \
-  iTerm \
-  System\ Preferences
-do
-  dockutil --add /Applications/$app.app/
-done
+# # Add applications to Dock
+# for app in \
+#   Mail \
+#   Firefox \
+#   Slack \
+#   iTerm \
+#   System\ Preferences
+# do
+#   dockutil --add /Applications/$app.app/
+# done
 
 # Disable Dashboard
-defaults write com.apple.dashboard mcx-disabled -bool true
+# defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t show Dashboard as a Space
-defaults write com.apple.dock dashboard-in-overlay -bool true
+# defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+# defaults write com.apple.dock mru-spaces -bool false
 
 # Make Dock icons of hidden applications translucent
 # defaults write com.apple.dock showhidden -bool true
@@ -315,7 +315,7 @@ defaults write com.apple.dock mru-spaces -bool false
 # Turn off dock icons magnification
 defaults write com.apple.dock magnification -boolean false
 
-# Show dock on right
+# Show dock on left
 defaults write com.apple.dock orientation -string 'left'
 
 # Set the icon size of Dock items to 36 pixels
@@ -331,13 +331,13 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock autohide-delay -float 0
 
 # Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
+# defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+# defaults write com.apple.dock showhidden -bool true
 
 
 ###############################################################################
@@ -347,14 +347,14 @@ defaults write com.apple.dock showhidden -bool true
 info_echo "Re-working Mail.app settings"
 
 # Disable send and reply animations in Mail.app
-defaults write com.apple.mail DisableReplyAnimations -bool true
-defaults write com.apple.mail DisableSendAnimations -bool true
+# defaults write com.apple.mail DisableReplyAnimations -bool true
+# defaults write com.apple.mail DisableSendAnimations -bool true
 
 # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+# defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
+# defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 
 # Display emails in threaded mode, sorted by date (oldest at the top)
 defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
@@ -416,11 +416,11 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 info_echo "Restarting affected applications"
 
 # Clean up iconservices cache
-sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm -rf {} \;
-sudo find /private/var/folders/ -name com.apple.iconservices -exec rm -rf {} \;
-sudo rm -rf /Library/Caches/com.apple.iconservices.store
+# sudo find /private/var/folders/ -name com.apple.dock.iconcache -exec rm -rf {} \;
+# sudo find /private/var/folders/ -name com.apple.iconservices -exec rm -rf {} \;
+# sudo rm -rf /Library/Caches/com.apple.iconservices.store
 
-info_echo "Cleaned up iconservices. Please reboot your machine at the soonest"
+# info_echo "Cleaned up iconservices. Please reboot your machine at the soonest"
 
 for app in "cfprefsd" "Dock" "Finder" "Safari" "Firefox" "Mail" "SystemUIServer" "iTerm"; do
   killall "${app}" > /dev/null 2>&1 || true
